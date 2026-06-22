@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ name }} | Portfolio</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 900px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 40px 0; border-bottom: 2px solid #00a1e0; }
+        h1 { color: #00a1e0; margin-bottom: 5px; }
+        .section { margin: 40px 0; }
+        .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .badge { background: #00a1e0; color: white; padding: 5px 10px; border-radius: 15px; font-size: 0.85em; margin-right: 5px; display: inline-block; margin-bottom: 5px;}
+        .highlight { color: #e56000; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>{{ name }}</h1>
+        <h3>{{ role }}</h3>
+        <p>{{ intro }}</p>
+        <p>Trailhead Points: <span class="highlight">{{ trailhead_points }}</span></p>
+    </header>
+
+    <div class="section">
+        <h2>Experience</h2>
+        <div class="card">
+            <h3>{{ experience.role }} @ {{ experience.company }}</h3>
+            <p><em>{{ experience.duration }}</em></p>
+            <ul>
+                {% for detail in experience.details %}
+                    <li>{{ detail }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Key Projects</h2>
+        {% for project in projects %}
+        <div class="card">
+            <h3>{{ project.title }}</h3>
+            <p><strong>Tech Stack:</strong> {{ project.tech }}</p>
+            <p>{{ project.desc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <div>
+            {% for skill in skills %}
+                <span class="badge">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
