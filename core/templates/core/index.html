@@ -8,88 +8,115 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        primary: '#00a1e0', // Salesforce Blue
-                        secondary: '#032d60', // Deep Tech Blue
+                        primary: '#00a1e0', // Salesforce Blue Accent
+                        darkbg: '#0f172a',  // Deep Slate Background
+                        cardbg: '#1e293b',  // Card Slate Background
                     }
                 }
             }
         }
     </script>
+    <style>
+        /* Smooth scrolling behavior */
+        html { scroll-behavior: smooth; }
+        body { background-color: #0f172a; color: #e2e8f0; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+<body class="font-sans antialiased selection:bg-primary selection:text-white">
 
-    <nav class="bg-white shadow-md py-4 px-6 fixed w-full top-0 z-50">
+    <nav class="bg-darkbg/80 backdrop-blur-md shadow-lg py-4 px-6 fixed w-full top-0 z-50 border-b border-gray-800">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-secondary">{{ name }}<span class="text-primary">.</span></h1>
-            <div class="space-x-4 hidden md:block">
-                <a href="#about" class="text-gray-600 hover:text-primary transition">About</a>
-                <a href="#experience" class="text-gray-600 hover:text-primary transition">Experience</a>
-                <a href="#projects" class="text-gray-600 hover:text-primary transition">Projects</a>
+            <h1 class="text-2xl font-bold text-white">{{ name }}<span class="text-primary">.</span></h1>
+            <div class="space-x-6 hidden md:block">
+                <a href="#about" class="text-gray-300 hover:text-primary transition font-medium">About</a>
+                <a href="#experience" class="text-gray-300 hover:text-primary transition font-medium">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-primary transition font-medium">Projects</a>
             </div>
         </div>
     </nav>
 
-    <section id="about" class="pt-32 pb-20 px-6 bg-gradient-to-br from-white to-gray-100">
-        <div class="max-w-6xl mx-auto text-center md:text-left flex flex-col md:flex-row items-center gap-10">
-            <div class="md:w-2/3">
-                <h2 class="text-sm font-semibold text-primary uppercase tracking-wider mb-2">Hello, I am</h2>
-                <h1 class="text-5xl font-extrabold text-secondary mb-4">{{ name }}</h1>
-                <h3 class="text-2xl font-medium text-gray-600 mb-6">{{ role }}</h3>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl">{{ intro }}</p>
+    <section id="about" class="pt-32 pb-20 px-6 relative overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary/20 rounded-full blur-3xl z-0"></div>
+        
+        <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12 relative z-10">
+            <div class="md:w-2/3 text-center md:text-left">
+                <h2 class="text-sm font-semibold text-primary uppercase tracking-widest mb-3">Hello, I am</h2>
+                <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4 tracking-tight">{{ name }}</h1>
+                <h3 class="text-2xl font-medium text-gray-400 mb-6">{{ role }}</h3>
+                <p class="text-lg text-gray-400 mb-8 leading-relaxed max-w-2xl">{{ intro }}</p>
                 
                 <div class="flex flex-wrap gap-4 justify-center md:justify-start">
-                    <a href="#projects" class="bg-primary hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition transform hover:-translate-y-1">View Projects</a>
-                    <a href="#" class="border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold py-3 px-8 rounded-lg transition">Download Resume</a>
+                    <a href="#projects" class="bg-primary hover:bg-blue-500 text-white font-semibold py-3 px-8 rounded-lg shadow-[0_0_15px_rgba(0,161,224,0.4)] transition transform hover:-translate-y-1">View Projects</a>
+                    <a href="#" class="border-2 border-gray-600 text-gray-300 hover:border-primary hover:text-white font-semibold py-3 px-8 rounded-lg transition">Download Resume</a>
                 </div>
                 
-                <div class="mt-8 flex gap-6 justify-center md:justify-start text-2xl text-gray-500">
-                    <a href="https://github.com/harshgupta2106" target="_blank" class="hover:text-black transition"><i class="fab fa-github"></i></a>
-                    <a href="https://linkedin.com/in/harsh-gupta021" target="_blank" class="hover:text-blue-700 transition"><i class="fab fa-linkedin"></i></a>
-                    <div class="flex items-center text-sm font-semibold bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                <div class="mt-10 flex gap-6 justify-center md:justify-start text-2xl text-gray-400">
+                    <a href="https://github.com/harshgupta2106" target="_blank" class="hover:text-white transition transform hover:scale-110"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/harsh-gupta021" target="_blank" class="hover:text-[#0077b5] transition transform hover:scale-110"><i class="fab fa-linkedin"></i></a>
+                    <div class="flex items-center text-sm font-semibold bg-gray-800 border border-gray-700 text-gray-300 px-4 py-1 rounded-full shadow-inner">
                         <i class="fas fa-cloud text-primary mr-2"></i> {{ trailhead_points }} Trailhead Points
                     </div>
                 </div>
             </div>
             
-            <div class="md:w-1/3">
-                <img src="myportfolio/images/c9419081-7a31-4f58-b398-682b2b6aae80~1.jpg" alt="Harsh Gupta" class="w-64 h-64 rounded-full border-4 border-white shadow-xl mx-auto object-cover object-top">
+            <div class="md:w-1/3 mb-10 md:mb-0">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-primary rounded-full blur-xl opacity-20 transform scale-110"></div>
+                    <img src="myportfolio/images/c9419081-7a31-4f58-b398-682b2b6aae80~1.jpg" alt="Harsh Gupta" class="relative w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-cardbg shadow-2xl mx-auto object-cover object-top z-10 transition transform hover:scale-105">
+                </div>
             </div>
-
         </div>
     </section>
 
-    <section id="experience" class="py-20 px-6 bg-white">
+    <section id="experience" class="py-20 px-6 bg-cardbg/30 border-t border-b border-gray-800">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-secondary mb-10 border-b-4 border-primary inline-block pb-2">Experience</h2>
-            <div class="bg-gray-50 rounded-xl p-8 shadow-sm border border-gray-100 relative hover:shadow-md transition">
-                <div class="absolute top-0 right-0 bg-primary text-white text-sm font-bold px-4 py-1 rounded-bl-lg rounded-tr-xl">
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl font-bold text-white">Experience</h2>
+                <div class="ml-4 flex-grow h-px bg-gray-800"></div>
+            </div>
+            
+            <div class="bg-cardbg rounded-2xl p-8 shadow-lg border border-gray-700 relative hover:border-gray-500 transition duration-300 group">
+                <div class="absolute top-0 right-0 bg-primary/10 text-primary text-sm font-bold px-4 py-2 rounded-bl-xl rounded-tr-2xl border-b border-l border-primary/20">
                     {{ experience.duration }}
                 </div>
-                <h3 class="text-2xl font-bold text-gray-800">{{ experience.role }}</h3>
-                <h4 class="text-lg text-primary font-medium mb-4"><i class="fas fa-building mr-2"></i>{{ experience.company }}</h4>
-                <ul class="space-y-3 text-gray-600 list-disc pl-5">
+                <h3 class="text-2xl font-bold text-white group-hover:text-primary transition">{{ experience.role }}</h3>
+                <h4 class="text-lg text-gray-400 font-medium mb-6 mt-1"><i class="fas fa-building mr-2 text-gray-500"></i>{{ experience.company }}</h4>
+                <ul class="space-y-4 text-gray-300 list-none">
                     {% for detail in experience.details %}
-                        <li>{{ detail }}</li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1.5 mr-3 text-sm"></i>
+                            <span class="leading-relaxed">{{ detail }}</span>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-20 px-6 bg-gray-50">
+    <section id="projects" class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-secondary mb-10 border-b-4 border-primary inline-block pb-2">Featured Projects</h2>
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl font-bold text-white">Featured Projects</h2>
+                <div class="ml-4 flex-grow h-px bg-gray-800"></div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {% for project in projects %}
-                <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col">
+                <div class="bg-cardbg rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_20px_rgba(0,161,224,0.15)] transition duration-300 border border-gray-700 hover:border-primary/50 flex flex-col group relative">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition duration-500"></div>
+                    
                     <div class="p-8 flex-grow">
-                        <h3 class="text-xl font-bold text-secondary mb-3">{{ project.title }}</h3>
-                        <p class="text-gray-600 mb-6">{{ project.desc }}</p>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white group-hover:text-primary transition">{{ project.title }}</h3>
+                            <i class="fas fa-code text-gray-600 text-2xl group-hover:text-primary/50 transition"></i>
+                        </div>
+                        <p class="text-gray-400 mb-8 leading-relaxed">{{ project.desc }}</p>
                         <div class="flex flex-wrap gap-2 mt-auto">
-                            <span class="bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-md">{{ project.tech }}</span>
+                            <span class="bg-gray-900 border border-gray-700 text-gray-300 text-xs font-semibold px-3 py-1.5 rounded-md">{{ project.tech }}</span>
                         </div>
                     </div>
                 </div>
@@ -98,12 +125,12 @@
         </div>
     </section>
 
-    <section class="py-20 px-6 bg-white">
+    <section class="py-20 px-6 bg-cardbg/30 border-t border-gray-800">
         <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-secondary mb-10 border-b-4 border-primary inline-block pb-2">Technical Skills</h2>
-            <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-white mb-12">Technical Arsenal</h2>
+            <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
                 {% for skill in skills %}
-                    <span class="bg-white border-2 border-gray-200 text-gray-700 font-semibold py-2 px-6 rounded-full shadow-sm hover:border-primary hover:text-primary transition cursor-default">
+                    <span class="bg-cardbg border border-gray-700 text-gray-300 font-semibold py-2.5 px-6 rounded-full shadow-md hover:border-primary hover:text-white hover:bg-gray-800 transition transform hover:-translate-y-1 cursor-default">
                         {{ skill }}
                     </span>
                 {% endfor %}
@@ -111,7 +138,7 @@
         </div>
     </section>
 
-    <footer class="bg-secondary text-white py-8 text-center">
+    <footer class="bg-gray-900 border-t border-gray-800 text-gray-500 py-8 text-center">
         <p>&copy; 2026 {{ name }}. Built with Django & Tailwind CSS.</p>
     </footer>
 
