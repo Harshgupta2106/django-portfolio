@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -116,3 +117,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# Static files configuration for deployment (Vercel/WhiteNoise)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+# Include the existing images folder so collectstatic picks up the profile image
+STATICFILES_DIRS = [
+    BASE_DIR / 'myportfolio' / 'images',
+]
+# Use WhiteNoise storage to serve compressed files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
